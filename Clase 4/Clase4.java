@@ -12,17 +12,27 @@ import java.util.Scanner;
  */
 public class Clase4 {
     //ejercicio 1.b
- public static int[] orden(int a,int b,int c,boolean may){
+ public static int[] orden(int a,int b,int c){
     
     int numeros[]= new int[3];
     numeros[0]=a;
     numeros[1]=b;
     numeros[2]=c;
-    int auxiliar;
-   
+    int aux;
+   int pos;
     
     
-    if(may==false){
+    //ordenamiento por insercion
+        for(int i=0;i<numeros.length;i++){
+            pos=i;
+            aux=numeros[i];
+            while((pos>0) && (numeros[pos-1]>aux)){
+                numeros[pos]=numeros[pos-1];
+                pos--;
+            }
+            numeros[pos]=aux;
+        }
+        /*ordenamiento de burbuja
         for(int i=0;i<numeros.length;i++){
             for(int j=i+1;j<3;j++){
                 if(numeros[i]<numeros[j]){
@@ -36,8 +46,10 @@ public class Clase4 {
                 }
                
             }
-        }
-    }
+        }*/
+    
+        
+    
         
           return numeros;  
         
@@ -79,10 +91,17 @@ public class Clase4 {
             
             
             
-            ordenados=Clase4.orden( num1, num2, num3, booleano);
+            ordenados=Clase4.orden( num1, num2, num3);
+            if(booleano==true){
             for(int i=0;i<ordenados.length;i++){
                 System.out.println(ordenados[i]);
             }
+            }else{
+                    for(int i=ordenados.length-1;i>=0;i--){
+                    System.out.println(ordenados[i]);
+                    }
+                    }
+            
         }
             }
             
